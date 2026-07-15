@@ -1,0 +1,171 @@
+# ===========================================
+# SAHABAT UTARA - Git Ignore
+# ===========================================
+
+# ===========================================
+# NODE.JS
+# ===========================================
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn-integrity
+package-lock.json
+yarn.lock
+
+# ===========================================
+# DATABASE
+# ===========================================
+# SQLite database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# MySQL data (if any)
+*.sql
+*.sqlite
+
+# ===========================================
+# ENVIRONMENT FILES
+# ===========================================
+# Never commit .env files (contain secrets)
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.*.local
+
+# ===========================================
+# LOGS
+# ===========================================
+logs/
+*.log
+pid
+*.pid
+
+# ===========================================
+# OPERATING SYSTEM FILES
+# ===========================================
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+[Dd]esktop.ini?
+[Dd]ocume~1/
+[L]ocal[S]ettings/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+.apdisk
+
+# Linux
+.*
+!.gitignore
+!.env.example
+*~
+
+# ===========================================
+# IDE / EDITOR
+# ===========================================
+# VS Code
+.vscode/
+*.code-workspace
+settings.json
+
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-*
+
+# Vim
+.*.swp
+.*.swo
+.*~
+
+# ===========================================
+# UPLOADS / MEDIA
+# ===========================================
+# Keep the uploads folder but not its contents
+server/uploads/*
+!server/uploads/.gitkeep
+!server/uploads/.gitignore
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.webp
+*.svg
+
+# Videos
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Documents
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+
+# ===========================================
+# TEMPORARY FILES
+# ===========================================
+tmp/
+temp/
+.cache/
+.parcel-cache/
+
+# ===========================================
+# RENDER.COM SPECIFIC
+# ===========================================
+.render/
+.cache/
+
+# ===========================================
+# DEBUG
+# ===========================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===========================================
+# TEST COVERAGE
+# ===========================================
+coverage/
+.nyc_output/
+
+# ===========================================
+# OTHER
+# ===========================================
+*.tgz
+*.tar.gz
+*.zip

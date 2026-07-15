@@ -1,0 +1,21 @@
+# Render.com Blueprint
+# This file configures automatic deployment to Render.com
+
+services:
+  # Backend + Frontend Web Service
+  - type: web
+    name: sahabat-utara
+    env: node
+    region: singapore  # closest to Indonesia
+    plan: free
+    rootDir: server
+    buildCommand: npm run build:client
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: JWT_SECRET
+        generateValue: true

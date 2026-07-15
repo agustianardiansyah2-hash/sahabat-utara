@@ -1,0 +1,2 @@
+# This file ensures the uploads folder is tracked by git even when empty
+# All uploaded files are ignored to prevent sensitive data from being committed
