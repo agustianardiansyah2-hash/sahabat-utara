@@ -118,26 +118,27 @@ Sudah dikonfigurasi otomatis untuk connect ke backend.
 
 ---
 
-## ☁️ Deploy ke Hosting (Render.com)
+## ☁️ Deploy ke Hosting
 
-### Opsi 1: Deploy ke Render.com (Gratis)
+### Opsi: Vercel + Railway (Gratis)
 
-Lihat panduan lengkap di [DEPLOY.md](./DEPLOY.md)
+Lihat panduan lengkap di [DEPLOY-VERCEL-RAILWAY.md](./DEPLOY-VERCEL-RAILWAY.md)
+
+**Arsitektur:**
+```
+Frontend (React)     →  Vercel (vercel.app)
+Backend (Node.js)    →  Railway (railway.app)
+```
 
 **Ringkasan:**
 1. Push project ke GitHub
-2. Buat akun di https://render.com
-3. Buat Blueprint dari repository
-4. Deploy otomatis!
+2. Deploy Backend ke Railway
+3. Deploy Frontend ke Vercel
+4. Hubungkan keduanya
 
-**URL Production:** `https://sahabat-utara.onrender.com`
-
-### Opsi 2: VPS (DigitalOcean/Vultr)
-
-1. Clone repo ke VPS
-2. Install Node.js + PM2
-3. Setup Nginx
-4. Setup SSL
+**URL Production:**
+- Frontend: `https://sahabat-utara.vercel.app`
+- Backend: `https://sahabat-utara.railway.app`
 
 ---
 

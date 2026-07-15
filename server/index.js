@@ -29,27 +29,39 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
-// CORS configuration - adjust allowed origins for production
+// CORS configuration - Vercel + Railway deployment
+const FRONTEND_URL = process.env.FRONTEND_URL || '';
+
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    // In production, allow all origins since frontend and backend are on same domain
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'http://localhost:3001',
-      // Render.com deployment URLs - will be auto-populated
-      /\.render\.com$/,  // Allow all render.com subdomains
-      /\.onrender\.com$/,
-    ];
-
-    // In production mode, allow all origins since we serve static files from same server
+    // Development mode - allow all localhost
     if (NODE_ENV !== 'production') {
       callback(null, true);
       return;
     }
 
-    // In production, check if origin matches allowed patterns
+    // Production mode - allow specific origins
+    const allowedOrigins = [
+      // Local development
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'http://localhost:3001',
+      // Vercel frontend domains
+      /\.vercel\.app$/,
+      /\.vercel\.dev$/,
+      // Railway backend domain
+      /\.railway\.app$/,
+      // Render.com (backup option)
+      /\.render\.com$/,
+      /\.onrender\.com$/,
+    ];
+
+    // Custom frontend URL from environment variable
+    if (FRONTEND_URL) {
+      allowedOrigins.push(FRONTEND_URL);
+    }
+
+    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) {
       callback(null, true);
       return;
@@ -66,7 +78,8 @@ const corsOptions = {
     if (isAllowed) {
       callback(null, true);
     } else {
-      callback(null, true); // Allow for now, API is internal
+      console.warn(`CORS: Blocking request from origin: ${origin}`);
+      callback(null, true); // Allow for now
     }
   },
   credentials: true
