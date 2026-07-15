@@ -1,0 +1,22 @@
+# Render.com Blueprint
+# Deploys Backend + Frontend in one service
+
+services:
+  - type: web
+    name: sahabat-utara
+    env: node
+    region: singapore
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: ""
