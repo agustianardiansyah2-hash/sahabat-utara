@@ -7,10 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "start:prod": "NODE_ENV=production node index.js",
-    "build": "npm run build:client",
-    "build:client": "cd ../client && npm install && npm run build",
-    "setup": "npm install && cd ../client && npm install"
+    "start:prod": "NODE_ENV=production node index.js"
   },
   "engines": {
     "node": ">=18.0.0"
