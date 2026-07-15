@@ -29,9 +29,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
-// CORS configuration - Vercel + Railway deployment
-const FRONTEND_URL = process.env.FRONTEND_URL || '';
-
+// CORS configuration - cPanel deployment
 const corsOptions = {
   origin: function (origin, callback) {
     // Development mode - allow all localhost
@@ -40,34 +38,20 @@ const corsOptions = {
       return;
     }
 
-    // Production mode - allow specific origins
+    // Production mode - allow same domain (cPanel)
     const allowedOrigins = [
-      // Local development
       'http://localhost:5173',
       'http://localhost:3000',
       'http://localhost:3001',
-      // Vercel frontend domains
-      /\.vercel\.app$/,
-      /\.vercel\.dev$/,
-      // Railway backend domain
-      /\.railway\.app$/,
-      // Render.com (backup option)
-      /\.render\.com$/,
-      /\.onrender\.com$/,
     ];
 
-    // Custom frontend URL from environment variable
-    if (FRONTEND_URL) {
-      allowedOrigins.push(FRONTEND_URL);
-    }
-
-    // Allow requests with no origin (like mobile apps or curl requests)
+    // Allow requests with no origin (like curl requests)
     if (!origin) {
       callback(null, true);
       return;
     }
 
-    // Check if origin matches any allowed pattern
+    // Check if origin matches allowed patterns
     const isAllowed = allowedOrigins.some(pattern => {
       if (pattern instanceof RegExp) {
         return pattern.test(origin);
@@ -78,8 +62,8 @@ const corsOptions = {
     if (isAllowed) {
       callback(null, true);
     } else {
-      console.warn(`CORS: Blocking request from origin: ${origin}`);
-      callback(null, true); // Allow for now
+      // In production, allow all (frontend and backend on same domain)
+      callback(null, true);
     }
   },
   credentials: true

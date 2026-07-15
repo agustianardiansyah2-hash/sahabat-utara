@@ -118,19 +118,25 @@ Sudah dikonfigurasi otomatis untuk connect ke backend.
 
 ---
 
-## ☁️ Deploy ke Hosting (Render.com)
+## ☁️ Deploy ke Hosting
 
-### Deploy ke Render.com (Gratis)
+### Opsi 1: cPanel Hosting (Recommended)
 
-Lihat panduan lengkap di [DEPLOY-RENDER.md](./DEPLOY-RENDER.md)
+Lihat panduan lengkap di [DEPLOY-CPANEL.md](./DEPLOY-CPANEL.md)
+
+**Syarat:**
+- Hosting dengan Node.js support
+- Cek: cPanel → Setup Node.js App
 
 **Ringkasan:**
-1. Push project ke GitHub
-2. Buat akun di https://render.com
-3. Connect GitHub repo
-4. Deploy otomatis!
+1. Build frontend di lokal
+2. Upload ke hosting
+3. Setup Node.js app di cPanel
+4. Jalankan!
 
-**URL Production:** `https://sahabat-utara.onrender.com`
+### Opsi 2: Render.com (Cloud)
+
+Lihat panduan di [DEPLOY-RENDER.md](./DEPLOY-RENDER.md)
 
 ---
 

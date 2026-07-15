@@ -2,17 +2,8 @@ import axios from 'axios';
 
 // API Base URL Configuration
 // - Development: Use relative path (through Vite proxy to localhost:3001)
-// - Production: Use absolute URL to Railway backend
-const getApiBase = () => {
-  // If VITE_API_URL is set (production), use it
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-  // Otherwise use relative path (development)
-  return '/api';
-};
-
-const API_BASE = getApiBase();
+// - Production (cPanel): Use relative path since frontend & backend on same domain
+const API_BASE = '/api';
 
 // Get stored token
 export const getToken = () => localStorage.getItem('sahabat_token');
